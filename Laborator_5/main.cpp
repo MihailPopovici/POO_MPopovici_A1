@@ -24,7 +24,7 @@ int main()
 
     Number n4 = 12345; // n4 will be in base 10
     n1 = 255; // n1 will be 11111111 (value 255 from base 10 in base 2)
-    //n4 += n1;
+    n4 += n1;
     n4.Print();
 
     n4 = "13579"; // n4 mentains its base (10) and will be 13579

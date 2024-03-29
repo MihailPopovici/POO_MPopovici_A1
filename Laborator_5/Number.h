@@ -14,6 +14,7 @@ public:
 	Number& operator=(const Number& other); // copy assignment operator
 	Number& operator=(Number&& other); // move assignment operator
 	Number& operator=(const char* value);
+	Number& operator+=(const Number& other);
 
 	//+/- operators using friend functions
 	friend Number operator+(const Number& n1, const Number& n2);

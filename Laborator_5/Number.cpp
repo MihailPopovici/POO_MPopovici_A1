@@ -30,14 +30,9 @@ Number::Number(const Number& other) {
 }
 
 Number::Number(Number&& other) {
-	//copy the base and reset other.base 
 	this->base = other.base;
+	this->value = other.value;
 	other.base = 0;
-	//copy the value and reset other.value
-	int length = 0;
-	while (other.value[length] != '\0') length++;
-	this->value = new char[length + 1];
-	memcpy(this->value, other.value, length + 1);
 	other.value = nullptr;
 }
 
@@ -60,11 +55,9 @@ Number& Number::operator=(const Number& other) {
 Number& Number::operator=(Number&& other) {
 	if (this != &other) {
 		delete[] this->value;
+
 		this->base = other.base;
-		int length = 0;
-		while (other.value[length] != '\0') length++;
-		this->value = new char[length + 1];
-		memcpy(this->value, other.value, length + 1);
+		this->value = other.value;
 
 		other.base = 0;
 		other.value = nullptr;
@@ -78,6 +71,10 @@ Number& Number::operator=(const char* value) {
 	delete[] this->value;
 	this->value = new char[length+1];
 	memcpy(this->value, result, length + 1);
+	return *this;
+}
+Number& Number::operator+=(const Number& other) {
+	*this = *this + other;
 	return *this;
 }
 
