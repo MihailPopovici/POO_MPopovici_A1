@@ -2,23 +2,23 @@
 class Student
 {
 private:
-	char name[25];
+	char name[256];
 	float mathGrade;
 	float englishGrade;
 	float historyGrade;
 public:
 	void SetName(char* name);
-	char* GetName();
+	const char* GetName();
 
-	bool SetMathGrade(float value);
-	float GetMathGrade();
+	bool SetMathGrade(float grade);
+	float GetMathGrade() const;
 
-	bool SetEnglishGrade(float value);
-	float GetEnglishGrade();
+	bool SetEnglishGrade(float grade);
+	float GetEnglishGrade() const;
 
-	bool SetHistoryGrade(float value);
-	float GetHistoryGrade();
+	bool SetHistoryGrade(float grade);
+	float GetHistoryGrade() const;
 
-	float GetAverageGrade();
+	float GetAverageGrade() const;
 };
 

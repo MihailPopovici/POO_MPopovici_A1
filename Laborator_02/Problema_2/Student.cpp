@@ -1,54 +1,56 @@
 #include "Student.h"
-#include <string.h>
+#include <cstring>
+#include <iostream>
 
 void Student::SetName(char* name) {
-	int length = strlen(name);
-	for (int i = 0; i < length; i++)
+	for (int i = 0; i < strlen(name); i++)
 		this->name[i] = name[i];
-	for (int i = length; i < 25; i++)
-		this->name[i] = '\0';
+	this->name[strlen(name)] = '\0';
 }
 
-char* Student::GetName() {
+const char* Student::GetName() {
 	return this->name;
 }
 
-bool Student::SetMathGrade(float value) {
-	if (value < 1 || value>10)
+bool Student::SetEnglishGrade(float grade) {
+	if (grade < 1 || grade>10) {
+		std::cout << "English grade must be between 1 and 10" << std::endl;
 		return false;
-	this->mathGrade = value;
+	}
+	this->englishGrade = grade;
 	return true;
 }
 
-float Student::GetMathGrade() {
-	return this->mathGrade;
-}
-
-bool Student::SetEnglishGrade(float value) {
-	if (value < 1 || value>10)
-		return false;
-	this->englishGrade = value;
-	return true;
-}
-
-float Student::GetEnglishGrade() {
+float Student::GetEnglishGrade() const {
 	return this->englishGrade;
 }
 
-bool Student::SetHistoryGrade(float value) {
-	if (value < 1 || value>10)
+bool Student::SetMathGrade(float grade) {
+	if (grade < 1 || grade>10) {
+		std::cout << "Math grade must be between 1 and 10" << std::endl;
 		return false;
-	this->historyGrade = value;
+	}
+	this->mathGrade = grade;
 	return true;
 }
 
-float Student::GetHistoryGrade() {
+float Student::GetMathGrade() const{
+	return this->mathGrade;
+}
+
+bool Student::SetHistoryGrade(float grade) {
+	if (grade < 1 || grade>10) {
+		std::cout << "History grade must be between 1 and 10" << std::endl;
+		return false;
+	}
+	this->historyGrade = grade;
+	return true;
+}
+
+float Student::GetHistoryGrade() const {
 	return this->historyGrade;
 }
 
-float Student::GetAverageGrade() {
-	float sum = 0;
-	sum = this->mathGrade + this->englishGrade + this->historyGrade;
-	return sum / 3;
+float Student::GetAverageGrade() const {
+	return (this->englishGrade + this->historyGrade + this->mathGrade) / 3;
 }
-
